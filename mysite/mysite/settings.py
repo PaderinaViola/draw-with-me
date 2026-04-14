@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-5v%x@-%c+@h3gsm$wdc^q$a_lrr(!1)1vst+v=+)wdt71tt^f3
 DEBUG = True
 
 ALLOWED_HOSTS = []
-CORS_ORIGIN_ALLOW_ALL = True
+
 
 # Application definition
 
@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'myapp',
 ]
 
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -55,7 +57,13 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+]
+
 ROOT_URLCONF = 'mysite.urls'
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 TEMPLATES = [
     {
