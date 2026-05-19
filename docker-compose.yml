@@ -1,0 +1,26 @@
+services:
+  django:
+    build:
+      context: ./mysite
+      dockerfile: Dockerfile.django
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./mysite:/app
+
+  react:
+    build:
+      context: ./mysite/myapp/frontend
+      dockerfile: Dockerfile.react
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./mysite/myapp/frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - django
+      
+volumes:
+  django_venv:

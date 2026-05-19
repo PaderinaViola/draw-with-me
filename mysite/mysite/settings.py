@@ -57,6 +57,12 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+    }
+}
+
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]
@@ -80,7 +86,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mysite.wsgi.application'
+ASGI_APPLICATION = 'mysite.asgi.application'
 
 
 # Database

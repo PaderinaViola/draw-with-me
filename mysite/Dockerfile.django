@@ -1,0 +1,17 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+
+# install uv
+RUN pip install uv
+
+# copy dependency files first (better caching)
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen
+
+# copy the rest of the project
+COPY . .
+
+RUN rm -rf .venv
+
+CMD ["uv", "run", "daphne", "-b", "0.0.0.0", "-p", "8000", "mysite.asgi:application"]
