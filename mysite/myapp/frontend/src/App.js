@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 
-const API = 'http://127.0.0.1:8000/api/myapp/';
+const API = 'http://localhost:8000/api/myapp/';
 
 export default function App() {
 
@@ -26,7 +26,7 @@ export default function App() {
 
   // open websocket on load          ← moved inside App()
   useEffect(() => {
-    socket.current = new WebSocket('ws://127.0.0.1:8000/ws/draw/');
+    socket.current = new WebSocket('ws://localhost:8000/ws/draw/');
 
     socket.current.onmessage = (e) => {
       const pt = JSON.parse(e.data);
